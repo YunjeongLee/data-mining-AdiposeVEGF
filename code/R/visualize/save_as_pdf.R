@@ -4,7 +4,7 @@ save_as_pdf <- function(filename, width=width_inches) {
   # Read the image
   img <- image_read(paste0(filename, ".png"))
   
-  # Calculate the width in pixels (assuming 300 DPI)
+  # Calculate the width in pixels (assuming 1000 DPI)
   width_pixels <- width * 1000
   
   # Resize the image
