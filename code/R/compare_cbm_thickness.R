@@ -177,13 +177,13 @@ cbm_tissue <- rbind(cbm_retina[c("Tissue", "Average")],
 # Add Tissue column to `cbm_lean_tis`
 pattern = c("retina|muscle|heart")
 cbm_lean_tis$Status <- "Lean mice and rats"
-cbm_obese$Status <- "Obese murine"
+cbm_obese$Status <- "Mice and rats with obesity"
 df_cbm = rbind(cbm_lean_tis, cbm_obese)
 df_cbm$Tissue <- str_to_title(str_extract(df_cbm$Reference, pattern))
 
 # Generate a new dataframe for errorbar (lean vs. obese)
 bar_data = data.frame(
-  Status = c("Lean mice and rats", "Obese murine"),
+  Status = c("Lean mice and rats", "Mice and rats with obesity"),
   Average = c(rm_cbm_lean_tis$b, rm_cbm_obese$b),
   lb = c(rm_cbm_lean_tis$b - rm_cbm_lean_tis$se,
          rm_cbm_obese$b - rm_cbm_obese$se),
