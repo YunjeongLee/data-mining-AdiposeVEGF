@@ -104,7 +104,7 @@ p = ggplot() +
   lightness(scale_color_brewer(palette="Blues"), scalefac(0.8)) +
   guides(color = guide_legend(order=1)) +
   new_scale_color() + 
-  geom_point(data = adipocyte_obese, aes(x = "Obese mice", y = Average, colour = Reference), size = 7, position = position_jitter(width=0.1, height=0)) +
+  geom_point(data = adipocyte_obese, aes(x = "Mice with obesity", y = Average, colour = Reference), size = 7, position = position_jitter(width=0.1, height=0)) +
   geom_point(data = adipocyte_obese, aes(x = "Mice with obesity", y = rm_adipocyte_obese$b), shape = 95, size = 20, colour = "darkred") +
   lightness(scale_color_colormap('Mice with obesity', discrete = T,colormap = "freesurface-red", reverse = T), scalefac(0.8)) + 
   xlab("") + ylab(TeX("Adipocyte diameter (\\mu{m})")) +
