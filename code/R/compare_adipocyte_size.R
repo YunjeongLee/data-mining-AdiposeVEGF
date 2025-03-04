@@ -78,14 +78,14 @@ adipocyte_lean_vs_obese = wtd.t.test(x=adipocyte_lean$Average, y=adipocyte_obese
 
 # Merge dataframes for plotting -------------------------------------------
 adipocyte_lean$Source <- "Lean mice"
-adipocyte_obese$Source <- "Obese mice"
+adipocyte_obese$Source <- "Mice with obesity"
 
 adipocyte = rbind(adipocyte_lean[c("Source", "Average")],
                   adipocyte_obese[c("Source", "Average")])
 
 # Error bar data
 bar_data = data.frame(
-  Source = c("Lean mice", "Obese mice"),
+  Source = c("Lean mice", "Mice with obesity"),
   Average = c(rm_adipocyte_lean$b, rm_adipocyte_obese$b),
   lb = c(rm_adipocyte_lean$b - rm_adipocyte_lean$se,
          rm_adipocyte_obese$b - rm_adipocyte_obese$se),
@@ -106,9 +106,9 @@ p = ggplot() +
   new_scale_color() + 
   geom_point(data = adipocyte_obese, aes(x = "Obese mice", y = Average, colour = Reference), size = 7, position = position_jitter(width=0.1, height=0)) +
   geom_point(data = adipocyte_obese, aes(x = "Obese mice", y = rm_adipocyte_obese$b), shape = 95, size = 20, colour = "darkred") +
-  lightness(scale_color_colormap('Obese mice', discrete = T,colormap = "freesurface-red", reverse = T), scalefac(0.8)) + 
+  lightness(scale_color_colormap('Mice with obesity', discrete = T,colormap = "freesurface-red", reverse = T), scalefac(0.8)) + 
   xlab("") + ylab(TeX("Adipocyte diameter (\\mu{m})")) +
-  geom_bracket(data = adipocyte, aes(x = Source, y = Average), xmin = "Lean mice", xmax = "Obese mice",
+  geom_bracket(data = adipocyte, aes(x = Source, y = Average), xmin = "Lean mice", xmax = "Mice with obesity",
                y.position = 110, tip.length = c(0.5, 0.1), label.size = 7, 
                label = generate_plabel(adipocyte_lean_vs_obese$coefficients["p.value"])) +
   theme(text = element_text(size = 20)) + ylim(c(0, 150))
